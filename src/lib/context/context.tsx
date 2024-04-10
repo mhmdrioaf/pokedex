@@ -16,6 +16,14 @@ export function PokemonContextProvider({
   children: React.ReactNode;
 }) {
   const [pageOffset, setPageOffest] = React.useState<number>(0);
+  const [likedPokemons, setLikedPokemons] = React.useState<string[]>(() => {
+    const likedPokemons = localStorage.getItem("likedPokemons");
+    if (likedPokemons) {
+      return JSON.parse(likedPokemons);
+    } else {
+      return [];
+    }
+  });
 
   const {
     data: pokemon,
@@ -66,6 +74,21 @@ export function PokemonContextProvider({
     }
   };
 
+  const handleLike = (pokemonID: number) => {
+    if (likedPokemons.includes(pokemonID.toString())) {
+      const newLikedPokemons = likedPokemons.filter(
+        (id) => id !== pokemonID.toString()
+      );
+      setLikedPokemons(newLikedPokemons);
+
+      localStorage.setItem("likedPokemons", JSON.stringify(newLikedPokemons));
+    } else {
+      const newLikedPokemons = [...likedPokemons, pokemonID.toString()];
+      setLikedPokemons(newLikedPokemons);
+      localStorage.setItem("likedPokemons", JSON.stringify(newLikedPokemons));
+    }
+  };
+
   const value: TPokemonContext = {
     state: {
       list: {
@@ -75,11 +98,17 @@ export function PokemonContextProvider({
         pageIndex: getPageIndex(),
         pageTotal: getPageTotal(),
       },
+      pokemon: {
+        liked: likedPokemons,
+      },
     },
     handler: {
       list: {
         next: handleNext,
         prev: handlePrev,
+      },
+      pokemon: {
+        like: handleLike,
       },
     },
   };
