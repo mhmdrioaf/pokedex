@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/ui/header";
 import Provider from "@/lib/query-provider";
 import { PokemonContextProvider } from "@/lib/context/context";
+import Footer from "@/components/ui/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
         <Provider>
           <PokemonContextProvider>{children}</PokemonContextProvider>
         </Provider>
+        <Footer />
       </body>
     </html>
   );
