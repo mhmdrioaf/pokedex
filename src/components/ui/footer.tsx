@@ -4,7 +4,9 @@ export default function Footer() {
       <p className="text-sm">
         Built by{" "}
         <span className="underline">
-          <a href="https://mhmdrioaf.vercel.app">Rio Ananta</a>
+          <a href="https://mhmdrioaf.vercel.app" target="_blank">
+            Rio Ananta
+          </a>
         </span>
         {" using "}
         <span className="underline">
