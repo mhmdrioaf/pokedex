@@ -47,7 +47,7 @@ export default function PokemonDetail({ pokemon }: IPokemonDetailProps) {
       >
         <img
           src={pokemon.sprite}
-          className="w-32 h-32"
+          className="w-64 h-64 bg-primary-foreground rounded-md border border-primary"
           alt={`${pokemon.name} picture`}
         />
       </figure>
