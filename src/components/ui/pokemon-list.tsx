@@ -30,7 +30,14 @@ export default function PokemonList() {
               </>
             ) : (
               state.list.pokemon.results.map((pokemon) => (
-                <PokemonCard pokemon={pokemon} key={pokemon.id} />
+                <PokemonCard
+                  pokemon={{
+                    id: pokemon.id,
+                    name: pokemon.name,
+                    sprite: pokemon.sprite,
+                  }}
+                  key={pokemon.id}
+                />
               ))
             )}
           </div>

@@ -33,7 +33,7 @@ export default function PokemonDetail({ pokemon }: IPokemonDetailProps) {
         <section id="like-button">
           <Button fill={false} onClick={() => handler.pokemon.like(pokemon.id)}>
             <span>
-              {state.pokemon.liked.includes(pokemon.id.toString())
+              {state.pokemon.liked.find((p) => p.id === pokemon.id)
                 ? "Unlike"
                 : "Like"}
             </span>

@@ -9,7 +9,7 @@ type TPokemonContext = {
     };
 
     pokemon: {
-      liked: string[];
+      liked: TLikedPokemon[];
     };
   };
 

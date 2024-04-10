@@ -3,7 +3,15 @@
 import { properizeName } from "@/lib/helper";
 import Link from "next/link";
 
-export default function PokemonCard({ pokemon }: { pokemon: TPokemon }) {
+interface IPokemonCardProps {
+  pokemon: {
+    id: number;
+    name: string;
+    sprite: string;
+  };
+}
+
+export default function PokemonCard({ pokemon }: IPokemonCardProps) {
   return (
     <Link
       href={`/pokemon/${pokemon.id}`}

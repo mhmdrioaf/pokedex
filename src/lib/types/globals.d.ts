@@ -73,3 +73,9 @@ interface IPokemonPagination {
   previous: string | null;
   results: TPokemon[];
 }
+
+type TLikedPokemon = {
+  id: number;
+  name: string;
+  sprite: string;
+};

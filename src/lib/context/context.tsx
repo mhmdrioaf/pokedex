@@ -16,14 +16,7 @@ export function PokemonContextProvider({
   children: React.ReactNode;
 }) {
   const [pageOffset, setPageOffest] = React.useState<number>(0);
-  const [likedPokemons, setLikedPokemons] = React.useState<string[]>(() => {
-    const likedPokemons = localStorage.getItem("likedPokemons");
-    if (likedPokemons) {
-      return JSON.parse(likedPokemons);
-    } else {
-      return [];
-    }
-  });
+  const [likedPokemons, setLikedPokemons] = React.useState<TLikedPokemon[]>([]);
 
   const {
     data: pokemon,
@@ -75,19 +68,37 @@ export function PokemonContextProvider({
   };
 
   const handleLike = (pokemonID: number) => {
-    if (likedPokemons.includes(pokemonID.toString())) {
-      const newLikedPokemons = likedPokemons.filter(
-        (id) => id !== pokemonID.toString()
-      );
-      setLikedPokemons(newLikedPokemons);
+    const pokemonData = pokemon?.results.find((p) => p.id === pokemonID);
+    const currentLikedPokemons = [...likedPokemons];
+    if (!pokemonData) return;
 
-      localStorage.setItem("likedPokemons", JSON.stringify(newLikedPokemons));
-    } else {
-      const newLikedPokemons = [...likedPokemons, pokemonID.toString()];
+    const { id, name, sprite } = pokemonData;
+
+    if (currentLikedPokemons.find((p) => p.id === id)) {
+      const newLikedPokemons = currentLikedPokemons.filter((p) => p.id !== id);
       setLikedPokemons(newLikedPokemons);
-      localStorage.setItem("likedPokemons", JSON.stringify(newLikedPokemons));
+      if (typeof window !== undefined) {
+        localStorage.setItem("likedPokemons", JSON.stringify(newLikedPokemons));
+      }
+    } else {
+      setLikedPokemons([...currentLikedPokemons, { id, name, sprite }]);
+      if (typeof window !== undefined) {
+        localStorage.setItem(
+          "likedPokemons",
+          JSON.stringify([...currentLikedPokemons, { id, name, sprite }])
+        );
+      }
     }
   };
+
+  React.useEffect(() => {
+    if (typeof window !== undefined) {
+      const likedPokemons = localStorage.getItem("likedPokemons");
+      if (likedPokemons) {
+        setLikedPokemons(JSON.parse(likedPokemons));
+      }
+    }
+  }, []);
 
   const value: TPokemonContext = {
     state: {
