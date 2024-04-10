@@ -11,8 +11,10 @@
   --accent-foreground: 18 15 7;
   --surface: 50 63 49;
   --surface-foreground: 224 255 224;
-  --padding-container-horizontal: 8rem;
-  --padding-container-vertical: 4rem;
+  --padding-container-horizontal-lg: 8rem;
+  --padding-container-vertical-lg: 4rem;
+  --padding-container-horizontal-sm: 2.5rem;
+  --padding-container-vertical-sm: 1.25rem;
 }
 
 .noise {

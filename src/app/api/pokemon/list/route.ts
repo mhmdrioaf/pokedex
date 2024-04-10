@@ -7,7 +7,7 @@ async function handler(request: NextRequest) {
   try {
     const res = await fetch(
       process.env.NEXT_PUBLIC_API_ENDPOINT! +
-        `/pokemon?limit=20&offset=${offset ?? 0}`
+        `/pokemon?limit=12&offset=${offset ?? 0}`
     );
     const response: IPokemonFetchResult = await res.json();
 

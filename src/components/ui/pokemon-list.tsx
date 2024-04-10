@@ -19,16 +19,18 @@ export default function PokemonList() {
         </div>
       )}
 
-      {!state.list.error && state.list.pokemon && (
+      {!state.list.error && (
         <div className="w-full flex flex-col gap-8">
-          <div className="w-full grid grid-cols-4 place-items-center gap-4">
-            {state.list.isLoading ? (
+          <div className="w-full grid grid-cols-2 lg:grid-cols-4 place-items-center gap-4">
+            {state.list.isLoading && (
               <>
-                {Array.from({ length: 20 }).map((_, index) => (
+                {Array.from({ length: 12 }).map((_, index) => (
                   <CardPlaceholder key={index} />
                 ))}
               </>
-            ) : (
+            )}
+            {state.list.pokemon &&
+              !state.list.isLoading &&
               state.list.pokemon.results.map((pokemon) => (
                 <PokemonCard
                   pokemon={{
@@ -38,8 +40,7 @@ export default function PokemonList() {
                   }}
                   key={pokemon.id}
                 />
-              ))
-            )}
+              ))}
           </div>
 
           <section
@@ -49,7 +50,7 @@ export default function PokemonList() {
             <Button
               onClick={handler.list.prev}
               disabled={
-                state.list.pokemon.previous === null || state.list.isLoading
+                state.list.pokemon?.previous === null || state.list.isLoading
               }
             >
               Previous
@@ -62,7 +63,7 @@ export default function PokemonList() {
             <Button
               onClick={handler.list.next}
               disabled={
-                state.list.pokemon.next === null || state.list.isLoading
+                state.list.pokemon?.next === null || state.list.isLoading
               }
             >
               Next

@@ -10,7 +10,7 @@ export default async function PokemonDetailPage({
 
   if (pokemon) {
     return (
-      <div className="w-full px-container-horizontal py-container-vertical">
+      <div className="w-full px-container-horizontal-sm py-container-vertical-sm lg:px-container-horizontal-lg lg:py-container-vertical-lg">
         <PokemonDetail pokemon={pokemon} />
       </div>
     );

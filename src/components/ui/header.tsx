@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="w-full inline-flex items-center justify-between bg-surface/50 text-surface-foreground px-container-horizontal py-2 sticky top-0 left-0 backdrop-blur-md z-40">
+    <header className="w-full inline-flex items-center justify-between bg-surface/50 text-surface-foreground px-container-horizontal-sm lg:px-container-horizontal-lg py-2 sticky top-0 left-0 backdrop-blur-md z-40">
       <Link href="/">
         <h1 className="text-2xl font-bold">Pokedex</h1>
       </Link>

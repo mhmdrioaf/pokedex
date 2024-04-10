@@ -7,7 +7,7 @@ export default function LikedPokemonList() {
   const { state } = usePokemon();
 
   return (
-    <div className="w-full grid grid-cols-4 place-items-center gap-4">
+    <div className="w-full grid grid-cols-2 lg:grid-cols-4 place-items-center gap-4">
       {state.pokemon.liked.length > 0 ? (
         state.pokemon.liked.map((pokemon) => (
           <PokemonCard

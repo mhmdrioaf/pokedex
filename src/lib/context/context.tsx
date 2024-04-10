@@ -24,6 +24,9 @@ export function PokemonContextProvider({
     isFetching,
     error,
     refetch,
+    isPending,
+
+    isRefetching,
   } = useQuery({
     queryKey: ["pokemon"],
     queryFn: () => listPokemon(pageOffset.toString()),
@@ -36,7 +39,7 @@ export function PokemonContextProvider({
 
   const handleNext = () => {
     if (pokemon?.next) {
-      setPageOffest((old) => old + 20);
+      setPageOffest((old) => old + 12);
       mutation.mutate();
     }
   };
@@ -45,7 +48,7 @@ export function PokemonContextProvider({
     if (pokemon?.previous) {
       setPageOffest((old) => {
         if (old <= 0) return 0;
-        return old - 20;
+        return old - 12;
       });
       mutation.mutate();
     }
@@ -56,12 +59,12 @@ export function PokemonContextProvider({
       return 1;
     }
 
-    return Math.floor(pageOffset / 20) + 1;
+    return Math.floor(pageOffset / 12) + 1;
   };
 
   const getPageTotal = () => {
     if (pokemon) {
-      return Math.ceil(pokemon.count / 20);
+      return Math.ceil(pokemon.count / 12);
     } else {
       return 1;
     }
@@ -103,7 +106,7 @@ export function PokemonContextProvider({
   const value: TPokemonContext = {
     state: {
       list: {
-        isLoading: isLoading || isFetching,
+        isLoading: isLoading || isFetching || isPending || isRefetching,
         pokemon: pokemon,
         error: error,
         pageIndex: getPageIndex(),

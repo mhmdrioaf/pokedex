@@ -19,8 +19,10 @@ const config: Config = {
         "surface-foreground": "rgb(var(--surface-foreground) / <alpha-value>)",
       },
       padding: {
-        "container-horizontal": "var(--padding-container-horizontal)",
-        "container-vertical": "var(--padding-container-vertical)",
+        "container-horizontal-lg": "var(--padding-container-horizontal-lg)",
+        "container-vertical-lg": "var(--padding-container-vertical-lg)",
+        "container-horizontal-sm": "var(--padding-container-horizontal-sm)",
+        "container-vertical-sm": "var(--padding-container-vertical-sm)",
       },
     },
   },
