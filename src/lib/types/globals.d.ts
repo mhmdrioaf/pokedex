@@ -13,20 +13,19 @@ type TPokemonResult = {
 type TPokemon = {
   id: number;
   name: string;
-  base_experience: number;
   height: number;
-  is_default: boolean;
-  order: number;
   weight: number;
   abilities: {
     is_hidden: boolean;
     slot: number;
     ability: TPokemonAbility;
   }[];
-  held_items: TPokemonHeldItem[];
-  location_area_encounters: string;
   sprite: string;
   stats: TPokemonStat[];
+  types: TPokemonType[];
+  moves: {
+    move: TPokemonMove;
+  }[];
 };
 
 type TPokemonAbility = {
@@ -55,6 +54,17 @@ type TPokemonStat = {
     name: string;
     url: string;
   };
+};
+
+type TPokemonType = {
+  slot: number;
+  type: {
+    name: string;
+  };
+};
+
+type TPokemonMove = {
+  name: string;
 };
 
 interface IPokemonPagination {
