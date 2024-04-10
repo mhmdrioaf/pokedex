@@ -17,6 +17,12 @@ export default function Header() {
         >
           Liked Pokemon
         </Link>
+        <Link
+          href="/wallet"
+          className="hover:underline hover:underline-offset-2"
+        >
+          Wallet
+        </Link>
       </nav>
     </header>
   );
