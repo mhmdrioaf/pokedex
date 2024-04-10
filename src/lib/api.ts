@@ -1,3 +1,5 @@
+import { getPokemonID, getPokemonSprite } from "./helper";
+
 export async function listPokemon(offset?: string) {
   const res = await fetch(
     process.env.NEXT_PUBLIC_API_POKEMON_LIST! +
@@ -16,17 +18,12 @@ export async function listPokemon(offset?: string) {
     count: response.count,
     next: response.next,
     previous: response.previous,
-    results: [],
+    results: response.results.map((result) => ({
+      id: getPokemonID(result.url),
+      name: result.name,
+      sprite: getPokemonSprite(getPokemonID(result.url)),
+    })),
   };
-
-  for (const result of response.results) {
-    const res = await fetch(result.url);
-    const response = await res.json();
-    pokemonResults.results.push({
-      ...response,
-      sprite: response.sprites.front_default,
-    });
-  }
 
   return pokemonResults;
 }
@@ -43,7 +40,7 @@ export async function getPokemon(id: string) {
 
   const pokemon: TPokemon = {
     ...response,
-    sprite: response.sprites.front_default,
+    sprite: getPokemonSprite(response.id),
   };
 
   return pokemon;

@@ -71,8 +71,14 @@ interface IPokemonPagination {
   count: number;
   next: string | null;
   previous: string | null;
-  results: TPokemon[];
+  results: TPokemonPaginationResult[];
 }
+
+type TPokemonPaginationResult = {
+  id: number;
+  name: string;
+  sprite: string;
+};
 
 type TLikedPokemon = {
   id: number;
