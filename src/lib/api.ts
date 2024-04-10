@@ -30,3 +30,21 @@ export async function listPokemon(offset?: string) {
 
   return pokemonResults;
 }
+
+export async function getPokemon(id: string) {
+  const res = await fetch(process.env.NEXT_PUBLIC_API_POKEMON_GET_DETAIL + id, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const response = await res.json();
+
+  const pokemon: TPokemon = {
+    ...response,
+    sprite: response.sprites.front_default,
+  };
+
+  return pokemon;
+}
