@@ -59,7 +59,7 @@ export default function PokemonDetail({ pokemon }: IPokemonDetailProps) {
         <h4 className="font-bold">Basic</h4>
         <div
           id="pokemon-detail-basic-info-container"
-          className="grid grid-cols-3 gap-8"
+          className="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-8"
         >
           <CardInfo
             id="pokemon-name"
@@ -78,7 +78,7 @@ export default function PokemonDetail({ pokemon }: IPokemonDetailProps) {
         <h4 className="font-bold">Pokemon Stats</h4>
         <div
           id="pokemon-detail-stats-container"
-          className="grid grid-cols-3 gap-8"
+          className="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-8"
         >
           {pokemon.stats.map((stats) => (
             <CardInfo
@@ -97,7 +97,7 @@ export default function PokemonDetail({ pokemon }: IPokemonDetailProps) {
         <h4 className="font-bold">Abilities</h4>
         <div
           id="pokemon-detail-abilities-container"
-          className="grid grid-cols-3 gap-8"
+          className="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-8"
         >
           {pokemon.abilities.map((ability) => (
             <CardInfo
@@ -116,7 +116,7 @@ export default function PokemonDetail({ pokemon }: IPokemonDetailProps) {
         <h4 className="font-bold">Pokemon Types</h4>
         <div
           id="pokemon-detail-types-container"
-          className="grid grid-cols-3 gap-8"
+          className="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-8"
         >
           {pokemon.types.map((types) => (
             <CardInfo
@@ -135,7 +135,7 @@ export default function PokemonDetail({ pokemon }: IPokemonDetailProps) {
         <h4 className="font-bold">Pokemon Moves</h4>
         <div
           id="pokemon-detail-types-container"
-          className="grid grid-cols-3 gap-8"
+          className="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-8"
         >
           {pokemon.moves.map((moves) => (
             <CardInfo

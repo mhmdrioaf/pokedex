@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="w-full px-container-horizontal py-4 bg-background text-foreground border-t border-t-surface flex items-center justify-center">
-      <p className="text-sm">
+      <p className="text-xs lg:text-sm">
         Built by{" "}
         <span className="underline">
           <a href="https://mhmdrioaf.vercel.app" target="_blank">
