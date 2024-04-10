@@ -15,6 +15,8 @@ const config: Config = {
         "primary-foreground": "rgb(var(--primary-foreground) / <alpha-value>)",
         accent: "rgb(var(--accent) / <alpha-value>)",
         "accent-foreground": "rgb(var(--accent-foreground) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        "surface-foreground": "rgb(var(--surface-foreground) / <alpha-value>)",
       },
       padding: {
         "container-horizontal": "var(--padding-container-horizontal)",
